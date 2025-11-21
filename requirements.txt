@@ -1,0 +1,8 @@
+ultralytics
+torch
+torchvision
+label-studio
+jupyterlab
+opencv-python
+roboflow[desktop]
+python-dotenv
