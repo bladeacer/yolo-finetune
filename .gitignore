@@ -2,3 +2,5 @@
 buffalo_dataset
 camel_dataset
 .env
+report*
+!report.tex

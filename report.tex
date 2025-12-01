@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\begin{document}
+
+  \frontmatter
+    \title{yolo-fine: Finetuning YOLOv11 on buffalo and camel labels}
+    \author{Nicholas Wen, Nanyang Polytechnic}
+    \date{December 2025}
+    \maketitle
+
+  \mainmatter
+  \chapter{Introduction}
+  This was made for my assignment submission for the Advanced Topics in AI. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice.
+
+  \section{Links}
+  \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Roboflow Dataset} 
+  \\
+  \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}
+  \\
+  HuggingFace Instance
+
+  \section{Data collection}
+  See References section on dataset sources.
+
+  \backmatter
+    \chapter{References}
+      \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}
+      \\
+      \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}
+      \\
+      \href{https://github.com/amikelive/coco-labels/blob/master/coco-labels-2014_2017.txt}{COCO 2014 - 2017 labels}
+\end{document}

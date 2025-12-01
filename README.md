@@ -1,5 +1,14 @@
 # YOLO Finetune
 
+<p align="center">
+    <a href="https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l">
+        <img src="https://app.roboflow.com/images/download-dataset-badge.svg"></img>
+    </a>
+    <a href="https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l/model/">
+        <img src="https://app.roboflow.com/images/try-model-badge.svg"></img>
+    </a>
+</p>
+
 Finetune YOLO v11 on `buffalo` and `camel` image data.
 
 ## Setup
@@ -33,3 +42,4 @@ Data labelling done on Roboflow. Benchmarks with wandb.
 Use Roboflow CLI to upload data. The [upload_dataset](./upload_dataset.sh) is a helper script for this.
 
 [Roboflow project link](https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l)
+
