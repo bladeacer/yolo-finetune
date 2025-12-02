@@ -20,31 +20,43 @@
      \vspace*{\stretch{2.0}}
   \end{titlepage}
 
-  \section{Findings}
+  \section{Introduction}
   \subsection{Foreword}
-  This was made for my assignment submission for the Advanced Topics in AI. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately 1,500 images were labelled across these two object classes.
+  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately 1,500 images were labelled across these two object classes.
 
   \subsection{Links}
-  This link contains the \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}. This link contains the HuggingFace Instance.
-  \newline\newline
+  This link contains the \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}. This link contains the HuggingFace Spaces Instance.
+
   See \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Labelled dataset} on Roboflow. This link contains the \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}. This link contains the \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}.
+
   This link contains \href{https://github.com/amikelive/coco-labels/blob/master/coco-labels-2014_2017.txt}{COCO 2014 - 2017 labels}
 
     \section{Data labelling}
-    During the data labelling process, I encountered some data which would be not beneficial to include in the dataset. These include low resolution, irrelevant images and images in which the subject of interest is too far away or heavily overlapping. These were discarded so as to prevent irrelevant data from affecting training accuracy. 
-    Labelling was done using Roboflow.
+    During the data labelling process, I encountered some data which would be not beneficial to include in the dataset. These include low resolution, irrelevant images such as illustrations and images in which the subject of interest is too far away or heavily overlapping. These were discarded so as to prevent irrelevant data from affecting training accuracy.
+
+    Images with slight overlap with boundaries which were difficult to draw bounding boxes for were segmented and labelled properly with the help of SAM3. All Labelling was done using Roboflow.
 
     \section{Data augmentation}
+    Data augmentation was employed to increase the amount of 
+
     \section{Model training}
+    A 80-10-10 train-test-validation split was employed on the dataset for evaluation purposes.
+
     \subsection{Evaluation}
-    Accuracy, test image and video.
+    We make use of wandb to evaluate metrics of our trained model.
+    Discuss more on Accuracy.
+
+    We seek to verify that the model is able to detect occurrences of the object classes when provided with a sample image or video.
 
     \subsection{Finetuning}
-    ?.
+    Discuss on Finetuning
 
     \section{Deployment}
-    After we have successfully created and finetuned the model, we will export it to
+    After we have successfully created and finetuned the model, we will export it to as a model artefact.
+
+    This was then deployed to a HuggingFace Spaces instance.
     \section{Conclusion}
     \section{Credits}
+    \LaTeX \space was used to create this report.
 
 \end{document}
