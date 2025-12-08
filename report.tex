@@ -22,22 +22,26 @@
 
   \section{Introduction}
   \subsection{Foreword}
-  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately 1,500 images were labelled across these two object classes.
+  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately \textbf{1,500 images} were labelled across these two object classes after the data preparation process.
 
   \subsection{Links}
   This link contains the \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}. This link contains the HuggingFace Spaces Instance.
 
-  See \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Labelled dataset} on Roboflow. This link contains the \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}. This link contains the \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}.
+  View the \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Labelled dataset} on Roboflow. This link contains the \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}. This link contains the \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}.
 
-  This link contains \href{https://github.com/amikelive/coco-labels/blob/master/coco-labels-2014_2017.txt}{COCO 2014 - 2017 labels}
+  This link contains \href{https://github.com/amikelive/coco-labels/blob/master/coco-labels-2014_2017.txt}{COCO 2014 - 2017 labels}.
 
-    \section{Data labelling}
-    During the data labelling process, I encountered some data which would be not beneficial to include in the dataset. These include low resolution, irrelevant images such as illustrations and images in which the subject of interest is too far away or heavily overlapping. These were discarded so as to prevent irrelevant data from affecting training accuracy.
+    \section{Data preparation}
+    During the data labelling process, I encountered some data which would be not beneficial to include in the dataset. For example, Camel dataset having cartoon, painting illustrations or Buffalo dataset having buffaloes that are too small for meaningful labelling.
 
-    Images with slight overlap with boundaries which were difficult to draw bounding boxes for were segmented and labelled properly with the help of SAM3. All Labelling was done using Roboflow.
+    In other words, I did not include low resolution, irrelevant images and images in which the subject of interest is too far away or heavily overlapping. These were discarded so as to prevent irrelevant data from affecting training accuracy.
 
-    \section{Data augmentation}
-    Data augmentation was employed to increase the amount of 
+    Images with slight overlap with boundaries which were difficult to draw bounding boxes for were segmented and labelled properly with the help of \href{https://ai.meta.com/sam3/}{SAM3}. All data labelling was done using \href{https://roboflow.com/}{Roboflow}.
+
+    \subsection{Data augmentation}
+    Data augmentation was employed to complement data discovery. Just a few hundred images is most likely not sufficient for detecting these object classes accurately. This is because the image dataset comprises camels and buffaloes images taken from varying distances, angles or conditions. For example, buffaloes on land and in water or mud; whether the camel or buffalo is being ridden on.
+
+    Data augmentation was primarily done to reduce the likelihood of the model overfitting, in that it tries to memorise the training dataseset instead of generalising patterns properly. Data augmentation steps such as Horizontal Flip, Random Crop, Random Rotation and Random Brightness was applied.
 
     \section{Model training}
     A 80-10-10 train-test-validation split was employed on the dataset for evaluation purposes.
@@ -56,7 +60,13 @@
 
     This was then deployed to a HuggingFace Spaces instance.
     \section{Conclusion}
+    In conclusion, we have prepared, trained and deployed a finetuned instance of YOLOv11.
+
+    There are inherent limitations in the existing dataset, such as a lack of images for younger camels or buffaloes. I have tried to keep human error to a minimum when labelling dataset, although I cannot fully guarantee 100\% accuracy.
+
     \section{Credits}
     \LaTeX \space was used to create this report.
+
+    Ms Liang Nanying for guidance and support.
 
 \end{document}

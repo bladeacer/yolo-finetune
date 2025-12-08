@@ -31,6 +31,10 @@ Installed dependencies are in the [requirements file](requirements.txt).
 
 You can run `check_torch.py` to check if your device has GPU supprt for PyTorch.
 
+```bash
+python check_torch.py
+```
+
 ## Credits
 
 Data labelling done on Roboflow. Benchmarks with wandb.
@@ -42,4 +46,3 @@ Data labelling done on Roboflow. Benchmarks with wandb.
 Use Roboflow CLI to upload data. The [upload_dataset](./upload_dataset.sh) is a helper script for this.
 
 [Roboflow project link](https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l)
-
