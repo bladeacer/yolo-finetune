@@ -22,12 +22,12 @@
 
   \section{Introduction}
   \subsection{Foreword}
-  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately \textbf{1,500 images} were labelled across these two object classes after the data preparation process.
+  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately \textbf{1,500 images} were labelled across these two object classes after the data preparation process. These were labelled taking about 2 to 3 weeks.
 
   \subsection{Links}
   This link contains the \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}. This link contains the HuggingFace Spaces Instance.
 
-  View the \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Labelled dataset} on Roboflow. This link contains the \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}. This link contains the \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}. Both datasets were large collections of unlabelled images.
+  View the \href{https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l}{Labelled dataset} on Roboflow. This link contains the \href{https://images.cv/dataset/water-buffalo-image-classification-dataset}{Buffalo dataset}. This link contains the \href{https://images.cv/dataset/camel-image-classification-dataset}{Camel dataset}.
 
   This link contains \href{https://github.com/amikelive/coco-labels/blob/master/coco-labels-2014_2017.txt}{COCO 2014 - 2017 labels}.
 
@@ -36,23 +36,27 @@
 
     In other words, I did not include low resolution, irrelevant images and images in which the subject of interest is too far away or heavily overlapping. These were discarded so as to prevent irrelevant data from affecting training accuracy.
 
-    Images with slight overlap with boundaries which were difficult to draw bounding boxes for were segmented and labelled properly with the help of \href{https://ai.meta.com/sam3/}{SAM3}. All data labelling was done using \href{https://roboflow.com/}{Roboflow}.
+    Images with slight overlap with boundaries which were difficult to draw bounding boxes for were segmented and labelled properly with the help of \href{https://ai.meta.com/sam3/}{SAM3}. All data labelling was done using \href{https://roboflow.com/}{Roboflow}. Both datasets were large collections of unlabelled images.
 
     \subsection{Data augmentation}
-    Data augmentation was employed to complement data discovery. Just a few hundred images is most likely not sufficient for detecting these object classes accurately. This is because the image dataset comprises camels and buffaloes images taken from varying distances, angles or conditions. For example, buffaloes on land and in water or mud; whether the camel or buffalo is being ridden on.
+    Data augmentation was employed to complement data discovery, since the image dataset comprises camels and buffaloes images taken from varying distances, angles or conditions. For example, buffaloes on land and in water or mud; whether the camel or buffalo is being ridden on.
 
     Data augmentation was primarily done to reduce the likelihood of the model overfitting, in that it tries to memorise the training dataseset instead of generalising patterns properly. Data augmentation steps such as Horizontal Flip, Random Crop, Random Rotation and Random Brightness was applied.
 
     \section{Model training}
     A 80-10-10 train-test-validation split was employed on the dataset for evaluation purposes. The model training was runned locally on my laptop.
 
-    As my hardware specifications are not the best, I had to run model training outside of the Jupyter Lab instance to prevent Out of Memory issues from CUDA running within the Jupyter kernel. Speaking of CUDA, my discrete GPU (Nvidia RTX 2050) does not support CUDA. However, it still runs much faster on the discrete GPU than on the CPU.
+    As my hardware specifications are not the best, I had to run model training outside of the Jupyter Lab instance to prevent Out of Memory issues from CUDA running within the Jupyter kernel. Speaking of CUDA, my discrete GPU (Nvidia RTX 2050) does not support CUDA. However, model training still runs much faster on the discrete GPU than on the CPU.
+
+    For images with large overlaps or where it would be not meaningfulto draw sufficiently large bounding boxes, SAM3 was employed for proper segmentation. These segmented images were more accurate to the data itself but ended up not being very meaningful for training.
+
+    At runtime, Ultralytics itself handles the mixed segment-detect dataset robustly, being able to discard the segment parts of the dataset which were not relevant to our analysis. The segments were left in as some images had both segmentation and bounding boxes applied to them.
 
     \subsection{Evaluation}
     We make use of wandb to evaluate metrics of our trained model.
-    Discuss more on Accuracy.
-
-    We seek to verify that the model is able to detect occurrences of the object classes when provided with a sample image or video.
+    \textbf{mAP50} was found to average .
+    \textbf{mAP50-95} was found to average .
+    Both Precision and Recall is important here, hence we will evaluate the F1 score.
 
     \subsection{Finetuning}
     Hence, certain parameters had to be finetuned to reduce CPU bottlenecks and improve performance metrics. The epoch count was increased from the default 30 to 40, with a patience metric of 5 so that the model does not keep training without any meaningful improvement.
@@ -61,6 +65,8 @@
     After we have successfully created and finetuned the model, we will export it to as a model artefact.
 
     This was then deployed to a HuggingFace Spaces instance.
+
+    After deployment, we verify that the model is able to detect occurrences of the object classes when provided with a sample image or video.
     \section{Conclusion}
     In conclusion, we have prepared, trained and deployed a finetuned instance of YOLOv11.
 
