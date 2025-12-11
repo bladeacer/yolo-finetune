@@ -7,3 +7,5 @@ report*
 yolo-fine*
 yolo11*
 runs
+wandb
+train_model.log

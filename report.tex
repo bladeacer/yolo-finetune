@@ -1,5 +1,7 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \hypersetup{
     colorlinks=true,
@@ -22,7 +24,7 @@
 
   \section{Introduction}
   \subsection{Foreword}
-  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately \textbf{1,500 images} were labelled across these two object classes after the data preparation process. These were labelled taking about 2 to 3 weeks.
+  This was made for my assignment submission for the Advanced Topics in AI module. For this assignment, I was tasked with finetuning a pre-trained Object Detection model to detect 2 classes of objects of my choice. I chose to finetune YOLOv11 on the `camel` and `buffalo` object classes. Approximately 1,500 images were labelled across these two object classes after the data preparation process, the exact image count as of 11 December 2025 is \textbf{1,643 images} after the data labelling process. The labelling process took about 2 to 3 weeks.
 
   \subsection{Links}
   This link contains the \href{https://github.com/bladeacer/yolo-finetune}{GitHub source}. This link contains the HuggingFace Spaces Instance.
@@ -50,12 +52,24 @@
 
     For images with large overlaps or where it would be not meaningfulto draw sufficiently large bounding boxes, SAM3 was employed for proper segmentation. These segmented images were more accurate to the data itself but ended up not being very meaningful for training.
 
+    \subsection{Segmentation versus detection}
     At runtime, Ultralytics itself handles the mixed segment-detect dataset robustly, being able to discard the segment parts of the dataset which were not relevant to our analysis. The segments were left in as some images had both segmentation and bounding boxes applied to them.
+
+    Even after discarding, we have about \textbf{8,000+} bounding box instances, which approximately is \textbf{1,500+} before augmentation.The image count to bounding box ratio is fine here, as there are plenty of images where we were able to draw multiple bounding boxes which compensated for the images for which we could not draw bounding boxes for. We will demonstrate a brief proof to show where these numbers are derived.
+
+    \begin{align*}
+        &\text{Let } x \text{ be the number of images in the original dataset before validation} \\
+        &y \text{split, be the number of data augmentations used.} \\
+        &\text{It is established that } x = 1,643 \text { and } y = 4 \\
+        &\therefore x \times (4+1) = 8,215 \text{ total images after augmentation (Q.E.D.)}
+    \end{align*}
+
+    Note: We add 1 to the multiplication to account for the base image set.
 
     \subsection{Evaluation}
     We make use of wandb to evaluate metrics of our trained model.
-    \textbf{mAP50} was found to average .
-    \textbf{mAP50-95} was found to average .
+    The best \textbf{mAP50} was found to average about .
+    The best \textbf{mAP50-95} was found to average about .
     Both Precision and Recall is important here, hence we will evaluate the F1 score.
 
     \subsection{Finetuning}

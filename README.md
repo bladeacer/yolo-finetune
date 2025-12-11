@@ -38,6 +38,17 @@ You can run `check_torch.py` to check if your device has GPU supprt for PyTorch.
 python check_torch.py
 ```
 
+## Training the model
+
+```bash
+wandb login
+python train_model.py
+```
+
+## Benchmarks
+See [Benchmarks file](./benchmarks.md).
+
+
 ## Credits
 
 Data labelling done on Roboflow. Benchmarks with wandb.
