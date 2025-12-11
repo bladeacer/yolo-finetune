@@ -1,3 +1,6 @@
+<!-- # TODO -->
+<!-- Run training. Make use wandb is active. -->
+
 # YOLO Finetune
 
 <p align="center">
