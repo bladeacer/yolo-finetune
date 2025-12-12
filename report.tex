@@ -59,12 +59,16 @@
 
     \begin{align*}
         &\text{Let } x \text{ be the number of images in the original dataset before validation} \\
-        &y \text{split, be the number of data augmentations used.} \\
-        &\text{It is established that } x = 1,643 \text { and } y = 4 \\
-        &\therefore x \times (4+1) = 8,215 \text{ total images after augmentation (Q.E.D.)}
+        &\text{split, } y \text{ be the number of data augmentations used and } z \text{ be the ratio}\\
+        &\text{between each image and a bounding box instance}\\
+        &\text{It is established that } x = 1,643, y = 4 \text { and } z \geq 1 \\
+        &\therefore x \times (4+1) = 8,215 \text{ Total images after augmentation} \\
+        & \Rightarrow  \text { Total bounding box instances after augmentation } \geq 8,215 \text { (Q.E.D.)}
     \end{align*}
 
-    Note: We add 1 to the multiplication to account for the base image set.
+    Note: 
+    We add 1 to the multiplication to account for the base image set.
+    $z \geq 1$ holds true as on average I drew one or more bounding boxes per image.
 
     \subsection{Evaluation}
     We make use of wandb to evaluate metrics of our trained model.

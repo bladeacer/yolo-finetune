@@ -12,6 +12,8 @@ their default values.
 
 Do note that these metrics are for uncommon `buffalo` and `camel` data classes.
 
+Note: Local metrics are based on the best epoch, wandb's are averaged across the epochs.
+
 ### v1
 
 Finetuned on: `yolo11s.pt`
@@ -71,12 +73,39 @@ Did not force learning rate setting change.
 ### v5
 
 Learning Rate: 0.001
+
+Epochs: 40
+
 Patience: 10
+
 Optimiser: AdamW
+
 Initial Learning Rate: 0.001
+
 Final Learning Rate: 0.0001
+
 Deterministic: False
 
 #### v5 Metrics: Local
 
+- Overall mAP50 (map50): 0.8395
+- Overall mAP50-95 (map): 0.6491
+- Mean Precision (mp): 0.8280
+- Mean Recall (mr): 0.7987
+
+Improved on all fronts slightly compared to v3.
+
 #### v5 Metrics: wandb
+
+- Overall mAP50 (B): 0.6139
+- Overall mAP50-95 (B): 0.7934
+- Mean Precision (B): 0.82682
+- Mean Recall (B): 0.77608
+
+Better mAP50-95, Precision but worse Recall and mAP50.
+
+### v6
+
+Epochs: 35
+
+Patience: 5

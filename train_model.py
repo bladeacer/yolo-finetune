@@ -9,6 +9,9 @@ MAX_WORKERS = max(1, multiprocessing.cpu_count() - 2)
 BATCH_SETTING = 8
 LR0 = 0.001 
 LRF = 0.0001
+EPOCHS = 35
+PATIENCE = 5
+DET = False
 
 # Custom Class to output to stdout + log file
 class Tee(object):
@@ -53,8 +56,8 @@ with Tee(LOG_FILE, mode='a') as t:
 
         result = model.train(
             data="yolo-fine-1/data.yaml",
-            epochs=40,
-            patience=10,
+            epochs=EPOCHS,
+            patience=PATIENCE,
             save_period=1,
             batch=BATCH_SETTING,
             workers=MAX_WORKERS,
@@ -64,7 +67,7 @@ with Tee(LOG_FILE, mode='a') as t:
             optimizer="AdamW",
             lr0=LR0,
             lrf=LRF,
-            deterministic=False
+            deterministic=DET
         )
 
     except Exception as e:
