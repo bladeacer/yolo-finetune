@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
 # Either "" for train or 2 for train2 and so on
-train_ver = ""
+train_ver = 2
 
 model = YOLO(f"yolo-fine/train{train_ver}/weights/best.pt")
 

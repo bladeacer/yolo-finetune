@@ -1,18 +1,18 @@
-<!-- # TODO -->
-<!-- Run training. Make use wandb is active. -->
-
 # YOLO Finetune
 
 <p align="center">
     <a href="https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l">
         <img src="https://app.roboflow.com/images/download-dataset-badge.svg"></img>
     </a>
-    <a href="https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l/model/">
-        <img src="https://app.roboflow.com/images/try-model-badge.svg"></img>
+    <a href="https://huggingface.co/bladeacer/yolo-fine/tree/main">
+        OpenVino Model
+    </a>
+    <a href="https://huggingface.co/spaces/IT3103-2025S2/232343X">
+        HuggingFace Instance
     </a>
 </p>
 
-Finetune YOLO v11 on `buffalo` and `camel` image data.
+Finetuning YOLO v11 on `buffalo` and `camel` image data.
 
 ## Setup
 
@@ -48,7 +48,6 @@ python train_model.py
 ## Benchmarks
 See [Benchmarks file](./benchmarks.md).
 
-
 ## Credits
 
 Data labelling done on Roboflow. Benchmarks with wandb.
@@ -60,3 +59,8 @@ Data labelling done on Roboflow. Benchmarks with wandb.
 Use Roboflow CLI to upload data. The [upload_dataset](./upload_dataset.sh) is a helper script for this.
 
 [Roboflow project link](https://universe.roboflow.com/stuff-avvl2/yolo-fine-y444l)
+
+[Stock buffalo footage](https://www.pexels.com/video/close-up-video-of-a-carabao-in-the-farm-5795227/)
+
+[Stock camel image](https://unsplash.com/photos/brown-camels-on-desert-during-daytime-zFWfrZ4rmcc)
+
