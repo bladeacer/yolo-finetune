@@ -99,9 +99,8 @@
     \section{Conclusion}
     In conclusion, we have prepared, trained and deployed a finetuned instance of YOLOv11.
 
-    There are inherent limitations in the existing dataset, such as a lack of images for younger camels or buffaloes. I have tried to keep human error to a minimum when labelling dataset, although I cannot fully guarantee 100\% accuracy in the labelling process. There is also less data in the dataset for camels as compared to buffaloes, leading to lower precision and recall for camels.
-
-    Since the object classes are not in the COCO dataset, they are unfamiliar to YOLO. This results in a slightly lower accuracy as the model was not trained specifically on more common classes like balloon.
+    There are inherent limitations in the existing dataset, such as a lack of images for younger camels or buffaloes. There is also an estimated 500:1300 camel-buffalo imbalance in the initial data before labelling.
+    However, data augmentation and proper finetuning has ensured that this imbalance does not affect the model performance much. The difference of Average Precision between these two object classes is only 4\% (0.859 for buffalo and 0.819 for camel). 
 
     \noindent\rule{\textwidth}{0.4pt}
     \section{Credits}
